@@ -11,23 +11,23 @@
 </head>
 
 <body class="flex-column min-100-vh">
-  <nav class="navbar">
-    <ul>
-      <li class="li-inline nav-item"><a href="/">Home</a></li>
-      <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
-      <li class="li-inline nav-item"><a href="/login">Login</a></li>
-      <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
+  <nav class="navbar bg-dark p-3">
+    <ul class="list-unstyled list-inline">
+      <li class="list-inline-item"><a class="text-decoration-none text-white" href="/">Home</a></li>
+      <li class="list-inline-item"><a class="text-decoration-none text-white" href="/dashboard">Dashboard</a></li>
+      <li class="list-inline-item"><a class="text-decoration-none text-white" href="/login">Login</a></li>
+      <li class="list-inline-item"><a class="text-decoration-none text-white" href="#" id="logout-link">Logout</a></li>
     </ul>
   </nav>
-  <header class="hero">
-    <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
+  <header class="hero bg-dark p-3">
+    <h1 class="app-title"><a class="text-decoration-none text-white" href="/">The Tech Blog</a></h1>
   </header>
 
   <main class="col-auto">
     {{{body}}}
   </main>
 
-  <footer class="flex-row justify-center">
+  <footer class="flex-row justify-center mt-3">
     &copy; The Tech Blog Folks
   </footer>
 </body>
