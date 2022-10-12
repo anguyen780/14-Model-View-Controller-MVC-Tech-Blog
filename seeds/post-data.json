@@ -1,6 +1,7 @@
 [
     {
       "title": "Test Post",
-      "body": "Testing"
+      "body": "Testing",
+      "userId": 1
     }
   ]

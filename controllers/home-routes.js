@@ -7,10 +7,7 @@ router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
       include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
+        { model: User },
       ],
     });
 
@@ -19,8 +16,7 @@ router.get('/', async (req, res) => {
     );
 
     res.render('all-posts', {
-      posts,
-      loggedIn: req.session.loggedIn,
+      posts
     });
   } catch (err) {
     console.log(err);
