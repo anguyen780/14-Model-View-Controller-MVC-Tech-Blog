@@ -55,15 +55,15 @@ router.get('/post/:id', async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) =>{
   try{
-    const postData = await Post.findByPk(req.params.id, {
+    const userData = await User.findByPk(req.session.user_id, {
       include: [
         {
           model: Post
         },
       ],
     });
-    const post = postData.get({ plain: true });
-    res.render('dashboard', { ...post, loggedIn: req.session.loggedIn });
+    const user = userData.get({ plain: true });
+    res.render('./layouts/dashboard', { user, loggedIn: req.session.loggedIn });
   }catch (err){
     res.status(500).json(err);
   }
@@ -71,20 +71,20 @@ router.get('/dashboard', withAuth, async (req, res) =>{
 
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/dashboard');
+    res.redirect('/');
     return;
+  } else {
+    res.render('signup')
   }
-  res.render('signup')
-  
 })
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
+  } else {
+    res.render('login');
   }
-
-  res.render('login');
 });
 
 module.exports = router;
