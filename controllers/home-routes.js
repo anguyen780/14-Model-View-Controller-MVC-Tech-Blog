@@ -69,9 +69,13 @@ router.get('/dashboard', withAuth, async (req, res) =>{
   }
 })
 
+router.get('/dashboard/new', (req, res) => {
+  res.render('new-post', {loggedIn: req.session.loggedIn})
+});
+
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect('./layouts/dashboard');
     return;
   } else {
     res.render('signup')
@@ -80,7 +84,7 @@ router.get('/signup', (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect('./layouts/dashboard');
     return;
   } else {
     res.render('login');
