@@ -63,7 +63,7 @@ router.get('/dashboard', withAuth, async (req, res) =>{
       ],
     });
     const user = userData.get({ plain: true });
-    res.render('./layouts/dashboard', { user, loggedIn: req.session.loggedIn });
+    res.render('./layouts/dashboard', { ...user, loggedIn: req.session.loggedIn });
   }catch (err){
     res.status(500).json(err);
   }
@@ -75,7 +75,7 @@ router.get('/dashboard/new', (req, res) => {
 
 router.get('/signup', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('./layouts/dashboard');
+    res.redirect('/dashboard');
     return;
   } else {
     res.render('signup')
@@ -84,7 +84,7 @@ router.get('/signup', (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.loggedIn) {
-    res.redirect('./layouts/dashboard');
+    res.redirect('/dashboard');
     return;
   } else {
     res.render('login');
